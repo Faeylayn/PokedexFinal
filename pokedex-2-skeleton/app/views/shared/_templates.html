@@ -1,0 +1,36 @@
+<script type="text/template" id="pokemon-list-item-template">
+
+  <li class="poke-list-item" data-id='<%%=pokemon.get("id")%>' >
+    <%%= "name: " + pokemon.escape("name") + "<br> type:" + pokemon.escape("poke_type")%>
+    </li>
+
+</script>
+
+<script type="text/template" id="pokemon-detail-template">
+  <section class="detail">
+
+    <img src=" <%%= pokemon.escape('image_url') %>" alt="" />
+    <%% var attributes = ["name", "poke_type", "attack", "defense", "moves"]; %>
+    <ul>
+      <%% _.each(attributes, function (attr){  %>
+        <li><%%= attr + ": " + pokemon.escape(attr) %></li>
+      <%% });  %>
+    </ul>
+    <ul class="toys">
+
+    </ul>
+  </section>
+</script>
+
+<script type="text/template" id="toy-list-item-template">
+  <li class="toy-list-item" data-id='<%%= toy.get("id")%>' data-pokemon-id='<%%= toy.get("pokemon_id")%>'>
+    <%% var attributes = ["name", "happiness", "price"]; %>
+
+  </li>
+</script>
+
+<script type="text/template" id="toy-detail-template">
+</script>
+
+<script type="text/template" id="pokemon-form-template">
+</script>
