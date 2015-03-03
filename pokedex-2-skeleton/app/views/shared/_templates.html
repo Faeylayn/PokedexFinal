@@ -16,20 +16,46 @@
         <li><%%= attr + ": " + pokemon.escape(attr) %></li>
       <%% });  %>
     </ul>
-    <ul class="toys">
-
-    </ul>
   </section>
+
+  <ul class="toys">
+
+  </ul>
 </script>
 
 <script type="text/template" id="toy-list-item-template">
   <li class="toy-list-item" data-id='<%%= toy.get("id")%>' data-pokemon-id='<%%= toy.get("pokemon_id")%>'>
     <%% var attributes = ["name", "happiness", "price"]; %>
-
+    <%% _.each(attributes, function (attr){  %>
+      <%%= attr + ": " + toy.escape(attr) + "<br>" %>
+    <%% });  %>
   </li>
 </script>
 
 <script type="text/template" id="toy-detail-template">
+  <section class="detail">
+    <img src="<%%= toy.escape("image_url")%>" alt="" />
+    <ul>
+      <%% var attributes = ["id", "name", "happiness", "price"]; %>
+      <%% _.each(attributes, function (attr){  %>
+        <li><%%= attr + ": " + toy.escape(attr) %></li>
+      <%% });  %>
+      <li>
+
+        <select data-toy-id='<%%= toy.get("id") %>' data-pokemon-id='<%%= toy.get("pokemon_id")%>'>
+          <%% pokes.each(function(poke) { %>
+
+            <option <%% if (poke.get("id") == toy.get("pokemon_id")){ %>
+              <%%= " selected "  %>
+              <%% } %>
+              value="<%%= poke.get("id") %>">
+                <%%= poke.escape("name") %>
+            </option>
+          <%% });  %>
+        </select>
+      </li>
+    </ul>
+  </section>
 </script>
 
 <script type="text/template" id="pokemon-form-template">
